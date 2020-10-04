@@ -12,11 +12,12 @@
 
     background-color: #E5E5E5;
 
-    font-family: Arial, sans-serif;
-    font-size  : 10px;
-    color      : #8993ad;
-    line-height: 12px;
-    word-wrap  : break-word;
+    font-family   : Arial, sans-serif;
+    font-size     : 9px;
+    color         : #8993ad;
+    line-height   : 13px;
+    word-wrap     : break-word;
+    letter-spacing: 0em;
   }
 
   img {
@@ -65,4 +66,18 @@
     width   : 1px !important;
     padding : 0 !important;
     overflow: hidden;
+  }
+
+  .container {
+    width : 340px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size     : 36px;
+    font-weight   : 700;
+    line-height   : 43px;
+    letter-spacing: 0em;
+    color         : #000000;
+    text-align    : center;
   }

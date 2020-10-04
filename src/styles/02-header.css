@@ -1,0 +1,40 @@
+.header {
+    position: relative;
+
+    display        : flex;
+    justify-content: flex-end;
+
+    background-color: #FFD241;
+}
+
+.header__menu-btn {
+    margin-right : 17px;
+    margin-top   : 23px;
+    margin-bottom: 25px;
+}
+
+.menu-btn {
+    display       : flex;
+    flex-direction: column;
+
+    width : 30px;
+    height: 23px;
+}
+
+.menu-btn__elem {
+    width : 100%;
+    height: 5px;
+
+    background-color: #000000;
+    ;
+}
+
+.menu-btn__elem:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.menu_close {
+    display: none;
+}
+
+@media(min-width: 1024px) {}

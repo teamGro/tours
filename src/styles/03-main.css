@@ -1,0 +1,141 @@
+.tours__title_hot {
+    position: relative;
+
+    margin-top   : 37px;
+    margin-bottom: 16px;
+}
+
+.offers__item {
+    margin-top: 30px;
+}
+
+.tours__title_hot::after {
+    content         : "";
+    position        : absolute;
+    bottom          : -14px;
+    display         : block;
+    width           : 100%;
+    height          : 2px;
+    background-color: #C4C4C4;
+}
+
+.offers__wrap {
+    position: relative;
+
+    margin-bottom: 10px;
+}
+
+.offers__price {
+    position: absolute;
+    bottom  : 4px;
+
+    display: block;
+    padding: 14px 26px;
+
+    font-size  : 18px;
+    line-height: 22px;
+    text-align : center;
+    color      : #000000;
+
+
+    background-color: #FFD241;
+}
+
+.offers__price_island {
+    padding: 14px 36px;
+}
+
+.offers__price_turkey {
+    padding: 14px 41px;
+}
+
+.offers__country {
+    margin-bottom: 7px;
+
+    font-size     : 9px;
+    line-height   : 11px;
+    color         : #C5B223;
+    text-transform: uppercase;
+}
+
+.offers__title {
+    margin-bottom: 20px;
+
+    font-size  : 18px;
+    line-height: 22px;
+    color      : #000000;
+}
+
+.offers__route {
+    margin-bottom: 15px;
+}
+
+.offers__desc {
+    line-height: 11px;
+    color      : #000000;
+}
+
+.offers__space {
+    display    : inline-block;
+    margin-left: 7px;
+}
+
+.offers__add {
+    display      : inline-block;
+    margin-top   : 12px;
+    padding      : 3px 18px 3px 12px;
+    border-radius: 3px;
+
+    color: #FFFFFF;
+
+    background-color: #CB0037;
+}
+
+.offers__download {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    margin         : 31px auto 0;
+    padding        : 13px 93px 11px;
+    border-radius  : 30px;
+
+    font-size     : 12px;
+    line-height   : 14px;
+    text-align    : center;
+    text-transform: uppercase;
+
+    background-color: #FFD241;
+}
+
+.download__arrow {
+    align-self   : center;
+    margin-top   : 6px;
+    height       : 5px;
+    width        : 5px;
+    border-left  : 1px solid #000000;
+    border-bottom: 1px solid #000000;
+
+    transform: rotate(-45deg);
+}
+
+
+@media(max-width: 1023px) {
+    .offers__item_mobile {
+        display: none;
+    }
+
+    .offers__btn {
+        display: none;
+    }
+}
+
+@media(min-width: 1024px) {
+    .tours__title_hot {
+        margin-top   : 46px;
+        margin-bottom: 28px;
+    }
+
+    .tours__title_hot::after {
+        display: none;
+    }
+}
