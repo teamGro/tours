@@ -80,4 +80,17 @@
     letter-spacing: 0em;
     color         : #000000;
     text-align    : center;
+    text-transform: uppercase;
+  }
+
+  @media(min-width: 768px) {
+    .container {
+      width: 720px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .container {
+      width: 780px;
+    }
   }
