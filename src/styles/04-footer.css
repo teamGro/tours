@@ -1,0 +1,35 @@
+.footer {
+    text-align      : center;
+    background-color: #272727;
+    overflow        : hidden;
+}
+
+.footer__item {
+    position: relative;
+    padding : 20px 0;
+}
+
+.footer__item:not(:last-child) {
+    margin-bottom: 95px;
+}
+
+.footer__link {
+    font-weight: bold;
+    font-size  : 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.1em;
+    color         : #FFFFFF;
+}
+
+.footer__item-line_top {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+}
+
+.footer__item-line_bottom {
+    position: absolute;
+    left    : 0;
+    bottom  : 0;
+}

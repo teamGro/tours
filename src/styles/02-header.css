@@ -7,8 +7,8 @@
 
     display        : flex;
     justify-content: flex-end;
-
-
+    width          : 100%;
+    padding-right  : 4%;
 }
 
 .header__menu-btn {

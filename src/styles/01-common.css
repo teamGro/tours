@@ -10,7 +10,7 @@
     margin : 0;
     padding: 0;
 
-    background-color: #E5E5E5;
+    background-color: #FFF;
 
     font-family   : Arial, sans-serif;
     font-size     : 9px;
@@ -81,6 +81,17 @@
     color         : #000000;
     text-align    : center;
     text-transform: uppercase;
+  }
+
+  .btn {
+    border-radius: 30px;
+
+    font-size     : 12px;
+    line-height   : 14px;
+    text-align    : center;
+    text-transform: uppercase;
+
+    background-color: #FFD241;
   }
 
   @media(min-width: 768px) {
