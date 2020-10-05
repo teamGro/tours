@@ -454,8 +454,17 @@
     position: relative;
   }
 
+  .glide__track {
+    overflow: hidden;
+  }
+
   .tours_hot {
     border-bottom: none;
+  }
+
+  .offers {
+    display: flex;
+    width  : 10000px;
   }
 
   .offers__item {
