@@ -413,6 +413,12 @@
   }
 
   .offers {
+    /* display        : flex;
+    flex-wrap      : wrap;
+    justify-content: space-between; */
+  }
+
+  .offers__sub-list {
     display        : flex;
     flex-wrap      : wrap;
     justify-content: space-between;
@@ -442,6 +448,12 @@
 }
 
 @media(min-width: 1024px) {
+
+  .glide,
+  .glide {
+    position: relative;
+  }
+
   .tours_hot {
     border-bottom: none;
   }
@@ -478,6 +490,14 @@
     border-bottom: 3px solid #000;
 
     transform: rotate(-45deg);
+  }
+
+  /* TODO replace border-color */
+  .tours__btn-arrow:hover,
+  .tours__btn-arrow:focus {
+    outline      : none;
+    border-right : 3px solid red;
+    border-bottom: 3px solid red;
   }
 
   /*  */

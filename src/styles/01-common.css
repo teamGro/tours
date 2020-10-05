@@ -18,6 +18,8 @@
     line-height   : 13px;
     word-wrap     : break-word;
     letter-spacing: 0em;
+
+    overflow-x: hidden;
   }
 
   img {

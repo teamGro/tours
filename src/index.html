@@ -6,6 +6,7 @@
   <meta name="description" content="Горящие туры: Испания, Исландия, Италия, Турция ">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="./styles/styles.min.css">
+  <script src="./scripts/glide.min.js" defer></script>
   <script src="./scripts/script.js" defer></script>
   <title>Путешествия</title>
 </head>
@@ -63,167 +64,289 @@
           <button class="tours__btn">Турция</button>
         </div>
 
-        <ul class="tours__items offers">
-          <li class="offers__item">
-            <div class="offers__wrap">
-              <picture>
-                <source media="(min-width: 1024px)" srcset="./img/jpg/italy_desctop.jpg">
-                <img src="./img/jpg/italy.jpg" alt="Италия" class="offers__img">
-              </picture>
-              <span class="offers__price offers__price_italy">от 118 112 Р</span>
-            </div>
+        <div class="glide">
+          <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides tours__items offers">
+              <li class="glide__slide">
+                <ul class="offers__sub-list">
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/italy_desctop.jpg">
+                        <img src="./img/jpg/italy.jpg" alt="Италия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_italy">от 118 112 Р</span>
+                    </div>
 
-            <p class="offers__country">Италия</p>
-            <h3 class="offers__title">Под небом Тосканы</h3>
-            <p class="offers__route">
-              Сансеполькро — (Перуджа) — Ассизи — Губбио — (Сиена) — Ла Верна — Ангиари — Монтерки — Ареццо — Кортона —
-              (Пиенца) - (Монтепульчано)
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              27.04.19 - 04.05.19 и еще 15 дат
-            </p>
+                    <p class="offers__country">Италия</p>
+                    <h3 class="offers__title">Под небом Тосканы</h3>
+                    <p class="offers__route">
+                      Сансеполькро — (Перуджа) — Ассизи — Губбио — (Сиена) — Ла Верна — Ангиари — Монтерки — Ареццо —
+                      Кортона —
+                      (Пиенца) - (Монтепульчано)
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19 и еще 15 дат
+                    </p>
 
-            <p class="offers__add">
-              Авиаперелет включен!
-            </p>
-          </li>
-          <li class="offers__item">
-            <div class="offers__wrap">
-              <picture>
-                <source media="(min-width: 1024px)" srcset="./img/jpg/island_desctop.jpg">
-                <img src="./img/jpg/island.jpg" alt="Исландия" class="offers__img">
-              </picture>
-              <span class="offers__price offers__price_island">140 715 Р</span>
-            </div>
+                    <p class="offers__add">
+                      Авиаперелет включен!
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/island_desctop.jpg">
+                        <img src="./img/jpg/island.jpg" alt="Исландия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_island">140 715 Р</span>
+                    </div>
 
-            <p class="offers__country">Исландия</p>
-            <h3 class="offers__title">Майские каникулы в Исландии</h3>
-            <p class="offers__route">
-              Рейкьявик — Тингвеллир — Гюдльфосс — Скафтафедль — Сельяландсфосс — Скоугафосс — Йёкюльсаурлоун — Голубая
-              Лагуна — Снайфельсйёкутль — Arnarstapi — Рейкьявик
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              27.04.19 - 04.05.19
-            </p>
-          </li>
-          <li class="offers__item">
-            <div class="offers__wrap">
-              <picture>
-                <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
-                <img src="./img/jpg/turkey.jpg" alt="Турция" class="offers__img">
-              </picture>
-              <span class="offers__price offers__price_turkey">37 302 Р</span>
-            </div>
+                    <p class="offers__country">Исландия</p>
+                    <h3 class="offers__title">Майские каникулы в Исландии</h3>
+                    <p class="offers__route">
+                      Рейкьявик — Тингвеллир — Гюдльфосс — Скафтафедль — Сельяландсфосс — Скоугафосс — Йёкюльсаурлоун —
+                      Голубая
+                      Лагуна — Снайфельсйёкутль — Arnarstapi — Рейкьявик
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                        <img src="./img/jpg/turkey.jpg" alt="Турция" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_turkey">37 302 Р</span>
+                    </div>
 
-            <p class="offers__country">Турция</p>
-            <h3 class="offers__title">Открытие Турции</h3>
-            <p class="offers__route">
-              Стамбул — Анкара — Каппадокия — Конья — Памуккале — Эфес — Кушадасы — Пергам — Ассос — Троя — Стамбул
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              28.04.19 - 05.05.19 и еще 3 даты
-            </p>
-          </li>
-          <li class="offers__item offers__item_mobile">
-            <div class="offers__wrap">
-              <picture>
-                <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
-                <img src="./img/jpg/norway.jpg" alt="Норвегия" class="offers__img">
-              </picture>
-              <span class="offers__price">145 000 Р</span>
-            </div>
+                    <p class="offers__country">Турция</p>
+                    <h3 class="offers__title">Открытие Турции</h3>
+                    <p class="offers__route">
+                      Стамбул — Анкара — Каппадокия — Конья — Памуккале — Эфес — Кушадасы — Пергам — Ассос — Троя —
+                      Стамбул
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      28.04.19 - 05.05.19 и еще 3 даты
+                    </p>
+                  </li>
+                  <li class="offers__item offers__item_mobile">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                        <img src="./img/jpg/norway.jpg" alt="Норвегия" class="offers__img">
+                      </picture>
+                      <span class="offers__price">145 000 Р</span>
+                    </div>
 
-            <p class="offers__country">Норвегия, Шпицберген</p>
-            <h3 class="offers__title">От Свальбарда до Груманта</h3>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br> 27.04.19 - 04.05.19 и еще 15 дат
-            </p>
+                    <p class="offers__country">Норвегия, Шпицберген</p>
+                    <h3 class="offers__title">От Свальбарда до Груманта</h3>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br> 27.04.19 - 04.05.19 и еще 15
+                      дат
+                    </p>
 
-            <p class="offers__add">
-              Гарантированный тур!
-            </p>
-          </li>
-          <li class="offers__item offers__item_mobile">
-            <picture>
-              <source media="(min-width: 1024px)" srcset="./img/jpg/italy_desctop.jpg">
-              <img src="" alt="Под небом Тосканы" class="offers__img">
-            </picture>
-            <span class="offers__price">от 118 112 Р</span>
+                    <p class="offers__add">
+                      Гарантированный тур!
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li class="glide__slide">
+                <ul class="offers__sub-list">
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/italy_desctop.jpg">
+                        <img src="./img/jpg/italy.jpg" alt="Италия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_italy">от 118 112 Р</span>
+                    </div>
 
-            <p class="offers__country">Италия</p>
-            <h3 class="offers__title">Под небом Тосканы</h3>
-            <p class="offers__route">
-              Сансеполькро — (Перуджа) — Ассизи — Губбио — (Сиена) — Ла Верна — Ангиари — Монтерки — Ареццо — Кортона —
-              (Пиенца) - (Монтепульчано)
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              27.04.19 - 04.05.19 и еще 15 дат
-            </p>
+                    <p class="offers__country">Италия</p>
+                    <h3 class="offers__title">Под небом Тосканы</h3>
+                    <p class="offers__route">
+                      Сансеполькро — (Перуджа) — Ассизи — Губбио — (Сиена) — Ла Верна — Ангиари — Монтерки — Ареццо —
+                      Кортона —
+                      (Пиенца) - (Монтепульчано)
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19 и еще 15 дат
+                    </p>
 
-            <p class="offers__add">
-              Авиаперелет включен!
-            </p>
-          </li>
-          <li class="offers__item offers__item_mobile">
-            <picture>
-              <source media="(min-width: 1024px)" srcset="./img/jpg/island_desctop.jpg">
-              <img src="" alt="Исландия" class="offers__img">
-            </picture>
-            <span class="offers__price">140 715 Р</span>
+                    <p class="offers__add">
+                      Авиаперелет включен!
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/island_desctop.jpg">
+                        <img src="./img/jpg/island.jpg" alt="Исландия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_island">140 715 Р</span>
+                    </div>
 
-            <p class="offers__country">Исландия</p>
-            <h3 class="offers__title">Майские каникулы в Исландии</h3>
-            <p class="offers__route">
-              Рейкьявик — Тингвеллир — Гюдльфосс — Скафтафедль — Сельяландсфосс — Скоугафосс — Йёкюльсаурлоун — Голубая
-              Лагуна — Снайфельсйёкутль — Arnarstapi — Рейкьявик
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              27.04.19 - 04.05.19
-            </p>
-          </li>
-          <li class="offers__item offers__item_mobile">
-            <picture>
-              <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
-              <img src="" alt="Турция" class="offers__img">
-            </picture>
-            <span class="offers__price">37 302 Р</span>
+                    <p class="offers__country">Исландия</p>
+                    <h3 class="offers__title">Майские каникулы в Исландии</h3>
+                    <p class="offers__route">
+                      Рейкьявик — Тингвеллир — Гюдльфосс — Скафтафедль — Сельяландсфосс — Скоугафосс — Йёкюльсаурлоун —
+                      Голубая
+                      Лагуна — Снайфельсйёкутль — Arnarstapi — Рейкьявик
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                        <img src="./img/jpg/turkey.jpg" alt="Турция" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_turkey">37 302 Р</span>
+                    </div>
 
-            <p class="offers__country">Турция</p>
-            <h3 class="offers__title">Открытие Турции</h3>
-            <p class="offers__route">
-              Стамбул — Анкара — Каппадокия — Конья — Памуккале — Эфес — Кушадасы — Пергам — Ассос — Троя — Стамбул
-            </p>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
-              28.04.19 - 05.05.19 и еще 3 даты
-            </p>
-          </li>
-          <li class="offers__item offers__item_mobile">
-            <picture>
-              <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
-              <img src="" alt="Норвегия" class="offers__img">
-            </picture>
-            <span class="offers__price">145 000 Р</span>
+                    <p class="offers__country">Турция</p>
+                    <h3 class="offers__title">Открытие Турции</h3>
+                    <p class="offers__route">
+                      Стамбул — Анкара — Каппадокия — Конья — Памуккале — Эфес — Кушадасы — Пергам — Ассос — Троя —
+                      Стамбул
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      28.04.19 - 05.05.19 и еще 3 даты
+                    </p>
+                  </li>
+                  <li class="offers__item offers__item_mobile">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                        <img src="./img/jpg/norway.jpg" alt="Норвегия" class="offers__img">
+                      </picture>
+                      <span class="offers__price">145 000 Р</span>
+                    </div>
 
-            <p class="offers__country">Норвегия, Шпицберген</p>
-            <h3 class="offers__title">От Свальбарда до Груманта</h3>
-            <p class="offers__desc">
-              8 дней / 7 ночей <span class="offers__space">Русский язык</span><br> 27.04.19 - 04.05.19 и еще 15 дат
-            </p>
+                    <p class="offers__country">Норвегия, Шпицберген</p>
+                    <h3 class="offers__title">От Свальбарда до Груманта</h3>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br> 27.04.19 - 04.05.19 и еще 15
+                      дат
+                    </p>
 
-            <p class="offers__add">
-              Гарантированный тур!
-            </p>
-          </li>
-        </ul>
+                    <p class="offers__add">
+                      Гарантированный тур!
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              <li class="glide__slide">
+                <ul class="offers__sub-list">
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/italy_desctop.jpg">
+                        <img src="./img/jpg/italy.jpg" alt="Италия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_italy">от 118 112 Р</span>
+                    </div>
 
-        <button class="tours__btn-arrow arrow">
-          <span class="arrow__next"></span>
+                    <p class="offers__country">Италия</p>
+                    <h3 class="offers__title">Под небом Тосканы</h3>
+                    <p class="offers__route">
+                      Сансеполькро — (Перуджа) — Ассизи — Губбио — (Сиена) — Ла Верна — Ангиари — Монтерки — Ареццо —
+                      Кортона —
+                      (Пиенца) - (Монтепульчано)
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19 и еще 15 дат
+                    </p>
+
+                    <p class="offers__add">
+                      Авиаперелет включен!
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/island_desctop.jpg">
+                        <img src="./img/jpg/island.jpg" alt="Исландия" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_island">140 715 Р</span>
+                    </div>
+
+                    <p class="offers__country">Исландия</p>
+                    <h3 class="offers__title">Майские каникулы в Исландии</h3>
+                    <p class="offers__route">
+                      Рейкьявик — Тингвеллир — Гюдльфосс — Скафтафедль — Сельяландсфосс — Скоугафосс — Йёкюльсаурлоун —
+                      Голубая
+                      Лагуна — Снайфельсйёкутль — Arnarstapi — Рейкьявик
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      27.04.19 - 04.05.19
+                    </p>
+                  </li>
+                  <li class="offers__item">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                        <img src="./img/jpg/turkey.jpg" alt="Турция" class="offers__img">
+                      </picture>
+                      <span class="offers__price offers__price_turkey">37 302 Р</span>
+                    </div>
+
+                    <p class="offers__country">Турция</p>
+                    <h3 class="offers__title">Открытие Турции</h3>
+                    <p class="offers__route">
+                      Стамбул — Анкара — Каппадокия — Конья — Памуккале — Эфес — Кушадасы — Пергам — Ассос — Троя —
+                      Стамбул
+                    </p>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br>
+                      28.04.19 - 05.05.19 и еще 3 даты
+                    </p>
+                  </li>
+                  <li class="offers__item offers__item_mobile">
+                    <div class="offers__wrap">
+                      <picture>
+                        <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                        <img src="./img/jpg/norway.jpg" alt="Норвегия" class="offers__img">
+                      </picture>
+                      <span class="offers__price">145 000 Р</span>
+                    </div>
+
+                    <p class="offers__country">Норвегия, Шпицберген</p>
+                    <h3 class="offers__title">От Свальбарда до Груманта</h3>
+                    <p class="offers__desc">
+                      8 дней / 7 ночей <span class="offers__space">Русский язык</span><br> 27.04.19 - 04.05.19 и еще 15
+                      дат
+                    </p>
+
+                    <p class="offers__add">
+                      Гарантированный тур!
+                    </p>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--right tours__btn-arrow arrow" data-glide-dir=">">
+          </div>
+        </div>
+
+
+        <span class="arrow__next"></span>
         </button>
 
         <button class="tours__download download btn">
@@ -235,64 +358,93 @@
       <section class="tours tours_popular">
         <h2 class="title tours__title tours__title_popular">Популярные туры</h2>
 
-        <div class="tours__popular-wrap">
-          <ul class="tours__items_popular popular">
-            <li class="popular__item">
-              <div class="popular__wrap">
-                <picture>
-                  <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
-                  <img src="./img/jpg/turkey_pop.jpg" alt="Турция" class="popular__img">
-                </picture>
-                <span class="popular__price">37 302 Р</span>
-              </div>
+        <div class="glide2">
+          <div class="glide__track tours__popular-wrap" data-glide-el="track">
+            <ul class="glide__slides tours__items_popular popular">
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                    <img src="./img/jpg/turkey_pop.jpg" alt="Турция" class="popular__img">
+                  </picture>
+                  <span class="popular__price">37 302 Р</span>
+                </div>
 
-              <p class="popular__country">Турция</p>
-              <h3 class="popular__title">Открытие Турции</h3>
-            </li>
-            <li class="popular__item">
-              <div class="popular__wrap">
-                <picture>
-                  <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
-                  <img src="./img/jpg/norway_pop.jpg" alt="Норвегия" class="popular__img">
-                </picture>
-                <span class="popular__price">145 000 Р</span>
-              </div>
+                <p class="popular__country">Турция</p>
+                <h3 class="popular__title">Открытие Турции</h3>
+              </li>
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                    <img src="./img/jpg/norway_pop.jpg" alt="Норвегия" class="popular__img">
+                  </picture>
+                  <span class="popular__price">145 000 Р</span>
+                </div>
 
-              <p class="popular__country">Норвегия, Шпицберген</p>
-              <h3 class="popular__title">От Свальбарда до Груманта</h3>
-            </li>
-            <li class="popular__item">
-              <div class="popular__wrap">
-                <picture>
-                  <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
-                  <img src="./img/jpg/turkey_pop.jpg" alt="Турция" class="popular__img">
-                </picture>
-                <span class="popular__price">37 302 Р</span>
-              </div>
+                <p class="popular__country">Норвегия, Шпицберген</p>
+                <h3 class="popular__title">От Свальбарда до Груманта</h3>
+              </li>
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                    <img src="./img/jpg/turkey_pop.jpg" alt="Турция" class="popular__img">
+                  </picture>
+                  <span class="popular__price">37 302 Р</span>
+                </div>
 
-              <p class="popular__country">Турция</p>
-              <h3 class="popular__title">Открытие Турции</h3>
-            </li>
-            <li class="popular__item">
-              <div class="popular__wrap">
-                <picture>
-                  <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
-                  <img src="./img/jpg/norway_pop.jpg" alt="Норвегия" class="popular__img">
-                </picture>
-                <span class="popular__price">145 000 Р</span>
-              </div>
+                <p class="popular__country">Турция</p>
+                <h3 class="popular__title">Открытие Турции</h3>
+              </li>
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                    <img src="./img/jpg/norway_pop.jpg" alt="Норвегия" class="popular__img">
+                  </picture>
+                  <span class="popular__price">145 000 Р</span>
+                </div>
 
-              <p class="popular__country">Норвегия, Шпицберген</p>
-              <h3 class="popular__title">От Свальбарда до Груманта</h3>
-            </li>
-          </ul>
+                <p class="popular__country">Норвегия, Шпицберген</p>
+                <h3 class="popular__title">От Свальбарда до Груманта</h3>
+              </li>
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/turkey_desctop.jpg">
+                    <img src="./img/jpg/turkey_pop.jpg" alt="Турция" class="popular__img">
+                  </picture>
+                  <span class="popular__price">37 302 Р</span>
+                </div>
+
+                <p class="popular__country">Турция</p>
+                <h3 class="popular__title">Открытие Турции</h3>
+              </li>
+              <li class="glide__slide popular__item">
+                <div class="popular__wrap">
+                  <picture>
+                    <source media="(min-width: 1024px)" srcset="./img/jpg/norway_desctop.jpg">
+                    <img src="./img/jpg/norway_pop.jpg" alt="Норвегия" class="popular__img">
+                  </picture>
+                  <span class="popular__price">145 000 Р</span>
+                </div>
+
+                <p class="popular__country">Норвегия, Шпицберген</p>
+                <h3 class="popular__title">От Свальбарда до Груманта</h3>
+              </li>
+            </ul>
+          </div>
+
+          <div class="glide__arrows" data-glide-el="controls">
+            <button class="tours__btn-arrow glide__arrow glide__arrow--right" data-glide-dir=">"></button>
+          </div>
         </div>
 
 
 
-        <button class="tours__btn-arrow">
-          <!-- <span class="tours__btn-elem"></span> -->
-        </button>
+
+
       </section>
 
       <section class="app">

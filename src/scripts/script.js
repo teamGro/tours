@@ -20,6 +20,28 @@ if (canvasTopElem.getContext) {
     ctxBottom.lineTo(1024, 3);
     ctxBottom.stroke();
 
-} else {
-
 }
+
+// new Glide('.glide').mount()
+new Glide('.glide2', {
+    bound: true,
+    startAt: 0,
+    breakpoints: {
+        2000: {
+            perView: 2
+        },
+        1023: {
+            perView: 3
+        },
+        767: {
+            perView: 2
+        }
+    }
+}).mount()
+// })
+
+new Glide('.glide', {
+    bound: true,
+    startAt: 0,
+    perView: 1
+}).mount()
