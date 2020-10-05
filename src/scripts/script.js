@@ -8,7 +8,7 @@ if (canvasTopElem.getContext) {
     ctxTop.beginPath();
     ctxTop.moveTo(0, 0);
     ctxTop.lineTo(54.5, 74);
-    ctxTop.lineTo(768, 74);
+    ctxTop.lineTo(1024, 74);
     ctxTop.stroke();
 
     let ctxBottom = canvasBottomElem.getContext('2d');
@@ -17,7 +17,7 @@ if (canvasTopElem.getContext) {
     ctxBottom.beginPath();
     ctxBottom.moveTo(0, 80);
     ctxBottom.lineTo(54.5, 3);
-    ctxBottom.lineTo(768, 3);
+    ctxBottom.lineTo(1024, 3);
     ctxBottom.stroke();
 
 } else {
