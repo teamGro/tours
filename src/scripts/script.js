@@ -22,25 +22,132 @@ if (canvasTopElem.getContext) {
     ctxBottom.stroke();
 }
 
-// валидация данных в форме
-let userName = document.querySelector("#user-name");
-let userWishes = document.querySelector("#user-wishes");
+// фильтр по странам
+let toursFilterBtns = document.querySelector(".tours__btn-wrap");
+let tours = document.querySelector(".offers");
+let toursOffers = document.querySelectorAll("[data-country]");
+let toursFilters = document.querySelector(".filters");
+let toursBtnArrow = document.querySelector(".tours__btn-arrow");
 
+let filterItalyBtn = document.querySelector("#italy");
+filterItalyBtn.addEventListener("click", function (e) {
+    filterHandler(this, e);
+});
+
+let filterIslandBtn = document.querySelector("#island");
+filterIslandBtn.addEventListener("click", function (e) {
+    filterHandler(this, e);
+})
+
+let filterTurkeyBtn = document.querySelector("#turkey");
+filterTurkeyBtn.addEventListener("click", function (e) {
+    filterHandler(this, e);
+});
+
+let filterSpainBtn = document.querySelector("#spain");
+filterSpainBtn.addEventListener("click", function (e) {
+    filterHandler(this, e);
+});
+
+// валидация данных в форме
+let dataPatterns = {
+    name: /^[а-яa-z0-9_-\S]{3,16}$/i,
+    phone: /^((\+?7|8)[ \-]?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/,
+    country: /^[а-яa-z0-9_-\S]{5,30}$/i
+}
+let userName = document.querySelector("#user-name");
+userName.value = localStorage.getItem("user-name") || "";
 userName.addEventListener("blur", function () {
-    onBlurHandle(this, "form__invalid");
+    onBlurHandle(this, "form__invalid", "name");
 });
 
 userName.addEventListener("focus", function () {
     onFocusHandle(this, "form__invalid");
 });
 
+
+let userWishes = document.querySelector("#user-wishes");
+userWishes.value = localStorage.getItem("user-country") || "";
 userWishes.addEventListener("blur", function () {
-    onBlurHandle(this, "form__invalid");
+    onBlurHandle(this, "form__invalid", "country");
 });
 
 userWishes.addEventListener("focus", function () {
     onFocusHandle(this, "form__invalid");
 });
+
+
+let userTel = document.querySelector("#user-tel");
+userTel.value = localStorage.getItem("user-tel") || "";
+userTel.addEventListener("blur", function () {
+    if (this.value.trim() === "") return;
+    if (!dataPatterns.phone.test(this.value)) {
+        this.classList.add("form__invalid");
+        return;
+    }
+    localStorage.setItem("user-tel", this.value)
+});
+
+userTel.addEventListener("focus", function () {
+    onFocusHandle(this, "form__invalid");
+});
+
+//обработка чекбоксов
+let connections = document.querySelector(".form__connection");
+connections.addEventListener("click", function (e) {
+    let target = e.target;
+    if (target.tagName == "SPAN" && target.classList.contains("chk__input")) {
+        target.classList.toggle("chk__input_active");
+    }
+    if (target.tagName === "LABEL" && target.classList.contains("chk__label")) {
+        target.parentNode.querySelector(".chk__input").
+            classList.toggle("chk__input_active");
+    }
+});
+
+let contacts = document.querySelector(".form__contact");
+contacts.addEventListener("click", function (e) {
+    let target = e.target;
+    if (target.tagName == "SPAN" && target.classList.contains("chk__input")) {
+        target.classList.toggle("chk__input_active");
+    }
+    if (target.tagName === "LABEL" && target.classList.contains("chk__label")) {
+        target.parentNode.querySelector(".chk__input").
+            classList.toggle("chk__input_active");
+    }
+});
+
+let agreementsSubscibe = document.querySelector(".agreements__input_subscribe");
+agreementsSubscibe.addEventListener("click", function () {
+    this.classList.toggle("agreements__input_active");
+});
+
+let agreementsHandle = document.querySelector(".agreements__input_handle");
+agreementsHandle.addEventListener("click", function () {
+    this.classList.toggle("agreements__input_active");
+});
+
+//отправка формы
+let btnSend = document.querySelector(".btn-send");
+btnSend.addEventListener("click", function (e) {
+    e.preventDefault();
+    let count = 0;
+    if (!agreementsHandle.classList.contains("agreements__input_active")) {
+        count++;
+        agreementsHandle.classList.add("agreements__input_handle-invalid");
+    }
+    if (userWishes.value.trim() === "") {
+        count++;
+        userWishes.classList.add("form__invalid");
+    }
+    if (userName.value.trim() === "") {
+        count++;
+        userName.classList.add("form__invalid")
+    }
+
+    if (count != 0) return;
+
+})
 
 // запуск слайдера
 new Glide('.glide2', {
@@ -60,17 +167,56 @@ new Glide('.glide2', {
 }).mount()
 
 new Glide('.glide', {
-    bound: true,
-    startAt: 0,
-    perView: 1
+    // bound: true,
+    // startAt: 0,
+    // perView: 1
 }).mount()
 
 
 // функции
-function onBlurHandle(elem, clName) {
-    if (elem.value === "") {
-        elem.classList.add(clName);
+function filterHandler(elem, ev) {
+    let target = ev.target.id;
+
+    if (elem.classList.contains("tours__btn_active")) {
+        elem.classList.remove("tours__btn_active");
+        let activeFilters = elem.parentNode.querySelector(".tours__btn_active");
+        if (activeFilters != null) {
+            Array.from(toursFilters.querySelectorAll(`[data-country=${target}]`)).forEach(elem => {
+                elem.parentNode.removeChild(elem);
+            });
+            return;
+        }
+        tours.style.display = "flex";
+        toursBtnArrow.style.display = "block";
+        while (toursFilters.firstChild) {
+            toursFilters.removeChild(toursFilters.firstChild);
+        }
+
+        return;
     }
+
+    let fragment = document.createDocumentFragment();
+    Array.from(toursOffers).forEach(elem => {
+        if (elem.getAttribute("data-country") == target) {
+            let node = elem.cloneNode(true)
+            fragment.append(node);
+
+        }
+    });
+    toursFilters.append(fragment);
+    toursFilters.style.display = "flex";
+    tours.style.display = "none";
+    toursBtnArrow.style.display = "none";
+    elem.classList.add("tours__btn_active");
+
+}
+
+function onBlurHandle(elem, clName, field) {
+    if (!dataPatterns[field].test(elem.value)) {
+        elem.classList.add(clName);
+        return;
+    }
+    localStorage.setItem(`user-${field}`, elem.value)
 }
 
 function onFocusHandle(elem, clName) {

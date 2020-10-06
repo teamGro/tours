@@ -1,5 +1,6 @@
 /* hot tours */
-.glide__track {
+.glide__track,
+.tours__outer {
   overflow: hidden;
 }
 
@@ -99,6 +100,12 @@
   letter-spacing: .2px;
 
   background-color: #CB0037;
+}
+
+.filters {
+  display        : flex;
+  flex-wrap      : wrap;
+  justify-content: space-between;
 }
 
 .tours__download {
@@ -222,6 +229,10 @@
   margin-bottom: 35px;
 }
 
+.form__user_wrap {
+  position: relative;
+}
+
 .form__user-wrap:not(:last-child) {
   margin-bottom: 20px;
 }
@@ -248,6 +259,26 @@
   letter-spacing: 1px;
 }
 
+.form__invalid {
+  border: 1px solid #CB0037;
+}
+
+.form__invalid+.form__invalid-value {
+  position: absolute;
+
+  margin-top    : 9px;
+  color         : #CB0037;
+  text-transform: none;
+}
+
+.form__invalid-value_disactive {
+  display: none;
+}
+
+.form__invalid+.form__invalid-value_disactive {
+  display: block;
+}
+
 .form__wrap {
   display        : flex;
   justify-content: space-around;
@@ -272,10 +303,26 @@
 }
 
 .chk__input {
+  position: relative;
+
   width        : 40px;
   height       : 40px;
   border       : 1px solid #E7E7E7;
   border-radius: 3px;
+}
+
+.chk__input_active::after {
+  content  : "\2713";
+  position : absolute;
+  top      : 50%;
+  left     : 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+
+  font-size  : 25px;
+  font-weight: 500;
+  color      : #FFD241;
 }
 
 .form__agreements {
@@ -292,11 +339,37 @@
 }
 
 .agreements__input {
+  position: relative;
+
   margin-right : 15px;
   width        : 15px;
   height       : 15px;
   border       : 1px solid #E7E7E7;
   border-radius: 3px;
+  outline      : none;
+}
+
+.agreements__input_handle-invalid {
+  display      : inline-block;
+  border       : 1px solid #CB0037;
+  border-radius: 3px;
+}
+
+.agreements__input_active:after {
+  content  : "\2713";
+  position : absolute;
+  top      : 50%;
+  left     : 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+
+  font-weight: 700;
+  color      : #FFD241;
+}
+
+.agreements__input_active.agreements__input_handle-invalid {
+  border: 1px solid #E7E7E7;
 }
 
 .agreements__desc {
@@ -319,24 +392,6 @@
 .form__star-icon {
   color    : red;
   font-size: 10px;
-}
-
-.form__invalid {
-  border: 1px solid #CB0037;
-}
-
-.form__invalid+.form__invalid-value {
-  margin-top    : 9px;
-  color         : #CB0037;
-  text-transform: none;
-}
-
-.form__invalid-value_disactive {
-  display: none;
-}
-
-.form__invalid+.form__invalid-value_disactive {
-  display: block;
 }
 
 .form__btn {
@@ -368,69 +423,6 @@
 
   .tours__title_hot::after {
     display: none;
-  }
-
-  .tours__btn-wrap {
-    overflow     : hidden;
-    display      : flex;
-    margin-bottom: 16px;
-  }
-
-  .tours__btn {
-    position: relative;
-
-    height       : 30px;
-    padding-left : 11px;
-    padding-right: 5px;
-    margin-right : 15px;
-
-    line-height   : 17px;
-    line-height   : 17px;
-    text-transform: uppercase;
-    font-size     : 14px;
-    font-weight   : 900;
-
-    background-color: #CDCDCD;
-  }
-
-  .tours__btn:hover {
-    background-color: red;
-  }
-
-  .tours__btn::before,
-  .tours__btn::after {
-    content : "";
-    position: absolute;
-
-    height: 0;
-    width : 0;
-  }
-
-  .tours__btn::after {
-    top  : 0;
-    right: -10px;
-
-    border-top   : 15.5px solid transparent;
-    border-bottom: 15.5px solid transparent;
-    border-left  : 10px solid #CDCDCD;
-  }
-
-  .tours__btn:hover::after {
-    border-left-color: red;
-  }
-
-  .tours__btn:not(:first-child)::before {
-    top : 0;
-    left: -8.5px;
-
-    border-top   : 15px solid #CDCDCD;
-    border-bottom: 15px solid #CDCDCD;
-    border-left  : 10px solid transparent;
-  }
-
-  .tours__btn:hover::before {
-    border-top-color   : red;
-    border-bottom-color: red;
   }
 
   .offers__sub-list {
@@ -465,12 +457,95 @@
 @media(min-width: 1024px) {
 
   .glide,
-  .glide {
+  .glide2,
+  .tours__wrapper {
     position: relative;
   }
 
   .tours_hot {
     border-bottom: none;
+  }
+
+  .tours__btn-wrap {
+    overflow     : hidden;
+    display      : flex;
+    margin-bottom: 16px;
+  }
+
+  .tours__btn {
+    position: relative;
+
+    height       : 30px;
+    padding-left : 11px;
+    padding-right: 5px;
+    margin-right : 15px;
+
+    line-height   : 17px;
+    line-height   : 17px;
+    text-transform: uppercase;
+    font-size     : 14px;
+    font-weight   : 900;
+
+    background-color: #CDCDCD;
+    transition      : all .3s linear;
+  }
+
+  .tours__btn:hover {
+    background-color: #FFD241;
+  }
+
+  .tours__btn:focus {
+    outline: none;
+  }
+
+  .tours__btn::before,
+  .tours__btn::after {
+    content : "";
+    position: absolute;
+
+    height    : 0;
+    width     : 0;
+    transition: all .3s linear;
+  }
+
+  .tours__btn::after {
+    top  : 0;
+    right: -10px;
+
+    border-top   : 15.5px solid transparent;
+    border-bottom: 15.5px solid transparent;
+    border-left  : 10px solid #CDCDCD;
+  }
+
+  .tours__btn:hover::after {
+    border-left-color: #FFD241;
+  }
+
+  .tours__btn:not(:first-child)::before {
+    top : 0;
+    left: -8.5px;
+
+    border-top   : 15px solid #CDCDCD;
+    border-bottom: 15px solid #CDCDCD;
+    border-left  : 10px solid transparent;
+  }
+
+  .tours__btn:hover::before {
+    border-top-color   : #FFD241;
+    border-bottom-color: #FFD241;
+  }
+
+  .tours__btn_active {
+    background-color: #FFD241;
+  }
+
+  .tours__btn_active::after {
+    border-left-color: #FFD241;
+  }
+
+  .tours__btn.tours__btn_active::before {
+    border-top-color   : #FFD241;
+    border-bottom-color: #FFD241;
   }
 
   .offers {
@@ -480,6 +555,10 @@
 
   .offers__item {
     width: 380px
+  }
+
+  .offers__item_disactive {
+    display: none;
   }
 
   .tours_popular {
@@ -509,15 +588,16 @@
     border-right : 3px solid #000;
     border-bottom: 3px solid #000;
 
-    transform: rotate(-45deg) translateY(-100%);
+    transform : rotate(-45deg) translateY(-100%);
+    transition: all .3s linear;
   }
 
   /* TODO replace border-color */
   .tours__btn-arrow:hover,
   .tours__btn-arrow:focus {
     outline      : none;
-    border-right : 3px solid red;
-    border-bottom: 3px solid red;
+    border-right : 3px solid #FFD241;
+    border-bottom: 3px solid #FFD241;
   }
 
   /*  */
