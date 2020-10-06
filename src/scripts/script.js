@@ -1,5 +1,6 @@
-var canvasTopElem = document.querySelector('.footer__item-line_top');
-var canvasBottomElem = document.querySelector('.footer__item-line_bottom');
+// Отрисовка фигуры в footer
+let canvasTopElem = document.querySelector('.footer__item-line_top');
+let canvasBottomElem = document.querySelector('.footer__item-line_bottom');
 
 if (canvasTopElem.getContext) {
     let ctxTop = canvasTopElem.getContext('2d');
@@ -19,9 +20,29 @@ if (canvasTopElem.getContext) {
     ctxBottom.lineTo(54.5, 3);
     ctxBottom.lineTo(5000, 3);
     ctxBottom.stroke();
-
 }
 
+// валидация данных в форме
+let userName = document.querySelector("#user-name");
+let userWishes = document.querySelector("#user-wishes");
+
+userName.addEventListener("blur", function () {
+    onBlurHandle(this, "form__invalid");
+});
+
+userName.addEventListener("focus", function () {
+    onFocusHandle(this, "form__invalid");
+});
+
+userWishes.addEventListener("blur", function () {
+    onBlurHandle(this, "form__invalid");
+});
+
+userWishes.addEventListener("focus", function () {
+    onFocusHandle(this, "form__invalid");
+});
+
+// запуск слайдера
 new Glide('.glide2', {
     bound: true,
     startAt: 0,
@@ -43,3 +64,17 @@ new Glide('.glide', {
     startAt: 0,
     perView: 1
 }).mount()
+
+
+// функции
+function onBlurHandle(elem, clName) {
+    if (elem.value === "") {
+        elem.classList.add(clName);
+    }
+}
+
+function onFocusHandle(elem, clName) {
+    if (elem.classList.contains(clName)) {
+        elem.classList.remove(clName);
+    }
+}

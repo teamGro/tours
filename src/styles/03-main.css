@@ -321,6 +321,24 @@
   font-size: 10px;
 }
 
+.form__invalid {
+  border: 1px solid #CB0037;
+}
+
+.form__invalid+.form__invalid-value {
+  margin-top    : 9px;
+  color         : #CB0037;
+  text-transform: none;
+}
+
+.form__invalid-value_disactive {
+  display: none;
+}
+
+.form__invalid+.form__invalid-value_disactive {
+  display: block;
+}
+
 .form__btn {
   margin: 28px auto 39px;
 }
