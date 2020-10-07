@@ -375,6 +375,8 @@
 .agreements__desc {
   margin-top : 11px;
   margin-left: 35px;
+  width      : 100%;
+
   color      : #C1C1C1;
   font-weight: 300;
 }
@@ -592,7 +594,6 @@
     transition: all .3s linear;
   }
 
-  /* TODO replace border-color */
   .tours__btn-arrow:hover,
   .tours__btn-arrow:focus {
     outline      : none;
@@ -601,8 +602,16 @@
   }
 
   /*  */
+  .app {
+    position: relative;
+  }
+
   .app__title {
     text-align: center;
+  }
+
+  .app__form {
+    z-index: 10;
   }
 
   .form__user-outer {
@@ -612,7 +621,8 @@
   }
 
   .form__user-wrap {
-    width: 380px;
+    width  : 380px;
+    z-index: 5;
   }
 
   .form__user-wrap:not(:last-child) {
@@ -631,9 +641,28 @@
 
   .form__wrap {
     justify-content: space-evenly;
+    z-index        : 5;
+  }
+
+  .form__chk {
+    z-index: 5;
   }
 
   .form__btn {
     margin: 40px 0;
+  }
+
+  .app-circle {
+    position: absolute;
+    left    : 125px;
+    top     : 124px;
+
+
+    width        : 573px;
+    height       : 573px;
+    border-radius: 50%;
+
+    z-index         : 1;
+    background-color: rgba(255, 210, 65, 0.2);
   }
 }

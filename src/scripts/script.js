@@ -76,7 +76,6 @@ userWishes.addEventListener("focus", function () {
     onFocusHandle(this, "form__invalid");
 });
 
-
 let userTel = document.querySelector("#user-tel");
 userTel.value = localStorage.getItem("user-tel") || "";
 userTel.addEventListener("blur", function () {
@@ -123,8 +122,45 @@ agreementsSubscibe.addEventListener("click", function () {
 });
 
 let agreementsHandle = document.querySelector(".agreements__input_handle");
+let popupContainer = document.querySelector("#templ").content.querySelector(".popup");
+let overlay = document.querySelector(".overlay");
 agreementsHandle.addEventListener("click", function () {
     this.classList.toggle("agreements__input_active");
+    if (this.classList.contains("agreements__input_active")) {
+        document.body.style.overflow = "hidden";
+        overlay.classList.add("overlay_active");
+        overlay.style.top = window.pageYOffset + "px";
+
+        let popup;
+        if (!overlay.children.length) {
+            popup = popupContainer.cloneNode(true);
+            overlay.append(popup);
+        }
+
+        let agreeBtn = overlay.querySelector(".popup__btn_agree");
+        agreeBtn.addEventListener("click", () => {
+            document.body.style.overflow = "";
+            overlay.classList.remove("overlay_active");
+            return;
+        });
+
+        let disagreeBtn = overlay.querySelector(".popup__btn_disagree");
+        disagreeBtn.addEventListener("click", () => {
+            document.body.style.overflow = "";
+            this.classList.remove("agreements__input_active");
+            overlay.classList.remove("overlay_active");
+            return;
+        });
+
+        let closeBtn = overlay.querySelector(".popup__close");
+        closeBtn.addEventListener("click", () => {
+            document.body.style.overflow = "";
+            this.classList.remove("agreements__input_active");
+            overlay.classList.remove("overlay_active");
+            return;
+        });
+    }
+
 });
 
 //отправка формы
@@ -146,7 +182,6 @@ btnSend.addEventListener("click", function (e) {
     }
 
     if (count != 0) return;
-
 })
 
 // запуск слайдера

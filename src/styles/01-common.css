@@ -61,6 +61,7 @@
     letter-spacing: 0em;
 
     overflow-x: hidden;
+    z-index   : 5;
   }
 
   img {

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="description" content="Горящие туры: Испания, Исландия, Италия, Турция ">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="./styles/animate.min.css">
   <link rel="stylesheet" href="./styles/styles.min.css">
   <script src="./scripts/glide.min.js" defer></script>
   <script src="./scripts/script.js" defer></script>
@@ -444,7 +445,7 @@
 
       <section class="app">
         <h2 class="app__title">Заявка на подбор путешествия</h2>
-
+        <div class="app-circle"></div>
         <form action="" class="app__form form">
           <fieldset class="form__fieldset">
             <legend class="form__legend">Немного о вас</legend>
@@ -603,6 +604,23 @@
       </li>
     </ul>
   </footer>
+
+  <div class="overlay"></div>
+
+  <template id="templ">
+    <div class="agreements__popup popup">
+      <button class="popup__close" type="button">&#10006;</button>
+      <p class="popup__info">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum atque libero id ullam sit alias animi ab
+        repellat veritatis, voluptates debitis nostrum recusandae aliquam quo aspernatur velit minima. Voluptatum,
+        labore.
+      </p>
+      <div class="popup__btn-container">
+        <button class="btn popup__btn popup__btn_agree">Согласен</button>
+        <button class="btn popup__btn popup__btn_disagree">Не согласен</button>
+      </div>
+    </div>
+  </template>
 </body>
 
 </html>
