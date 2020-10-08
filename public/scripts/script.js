@@ -53,29 +53,62 @@ months = {
     10: "Ноябрь",
     11: "Декабрь",
 }
-const templ = document.querySelector("#templ");
 const dateField = document.querySelector(".search__field_dates");
-let dateTempl = templ.content.querySelector("#calendar");
+let date = new Date();
+let month = date.getMonth();
+let currentMonth = month;
+let year = date.getFullYear();
+let currentYear = year;
+let monthYearField = dateField.querySelector(".calendar__month");
+monthYearField.textContent = `${months[currentMonth]} ${currentYear}`;
+let userDates = [];
+
+const btnNextMonth = dateField.querySelector(".calendar__btn_next");
+btnNextMonth.addEventListener("click", function () {
+    let calendarTable = dateField.querySelector(".calendar__table");
+    let calendarContainer = dateField.querySelector(".calendar__container");
+
+    currentMonth++;
+    if (currentMonth == 12) {
+        currentMonth = 0;
+        currentYear++;
+    }
+
+    calendarTable.remove();
+    createCalendar(calendarContainer, currentYear, currentMonth);
+    monthYearField.textContent = `${months[currentMonth]} ${currentYear}`;
+    return false;
+})
+
+const btnPrevMonth = dateField.querySelector(".calendar__btn_prev");
+btnPrevMonth.addEventListener("click", function () {
+    let calendarTable = dateField.querySelector(".calendar__table");
+    let calendarContainer = dateField.querySelector(".calendar__container");
+
+    currentMonth--;
+    if (currentMonth == -1) {
+        currentMonth = 11;
+        currentYear--;
+    }
+
+    calendarTable.remove();
+    createCalendar(calendarContainer, currentYear, currentMonth);
+    monthYearField.textContent = `${months[currentMonth]} ${currentYear}`;
+    return false;
+})
+
 dateField.addEventListener("click", function (e) {
     let target = e.target;
-    console.log(target);
 
-    let date, month, year, monthYearField;
-    let calendarContainer;
+    if (target.closest(".search__field-wrap") && target.tagName != "TD") {
+        if (this.querySelector(".calendar__table") == null) {
 
-    if (target.closest(".search__field-wrap") && target.tagName != "BUTTON") {
-        if (this.querySelector(".calendar") == null) {
-            date = new Date();
-            month = date.getMonth();
-            year = date.getFullYear();
-            monthYearField = dateTempl.querySelector(".calendar__month");
-            monthYearField.textContent = `${months[month]} ${year}`;
 
-            calendarContainer = dateTempl.querySelector(".calendar__container");
-            console.log(calendarContainer);
+            let calendarContainer = this.querySelector(".calendar__container");
             createCalendar(calendarContainer, year, month);
-            this.append(dateTempl);
+
             this.querySelector(".search__more").classList.add("search__more_open");
+            this.querySelector(".calendar").classList.toggle("calendar_disactive");
 
             return;
         }
@@ -83,28 +116,40 @@ dateField.addEventListener("click", function (e) {
         this.querySelector(".search__more").classList.toggle("search__more_open");
         return;
     }
+});
 
-    let btnNextMonth = this.querySelector(".calendar__btn_next");
-    btnNextMonth.addEventListener("click", () => {
-        let date = new Date();
-        let month = date.getMonth();
-        month += 1;
-        let year = date.getFullYear();
-        let monthYearField = dateTempl.querySelector(".calendar__month");
-        monthYearField.textContent = `${months[month]} ${year}`;
+let calendarContainer = dateField.querySelector(".calendar__container");
+calendarContainer.addEventListener("click", (e) => {
 
-        let calendarContainer = dateField.querySelector(".calendar__container");
-        let calendarTable = dateField.querySelector(".calendar__table");
-        calendarTable.remove();
+    let target = e.target;
+    if (target.tagName == 'TH') return;
 
-        createCalendar(calendarContainer, year, month);
+    target.className = "calendar__set-day";
+    let userDay = target.textContent
 
-        //calendarContainer.append(newMonth);
-    })
+    if (+userDay < 10) userDay = `0${userDay}`;
+
+    let localCurrentMoth = currentMonth + 1;
+    if (localCurrentMoth < 10) localCurrentMoth = `0${localCurrentMoth}`;
+
+    userDates.push(`${userDay}.${localCurrentMoth}.${currentYear}`);
+
+    if (userDates.length == 2) {
+        dateField.querySelector(".calendar").classList.toggle("calendar_disactive");
+        dateField.querySelector(".search__more").classList.toggle("search__more_open");
+        if (userDates[1] > userDates[0]) {
+            dateField.querySelector(".search__title_dates").textContent = `${userDates[0]} - ${userDates[1]}`;
+        } else {
+            dateField.querySelector(".search__title_dates").textContent = `${userDates[1]} - ${userDates[0]}`;
+        }
+        Array.from(dateField.querySelectorAll(".calendar__set-day")).forEach(elem => {
+            elem.classList.remove("calendar__set-day");
+        });
+        userDates = [];
+    }
 })
 
 // Обработчик для типа путешествия
-
 const tripField = document.querySelector(".search__field_type");
 let tripFieldName = document.querySelector(".search__title_type");
 tripField.addEventListener("click", function (e) {
@@ -210,6 +255,7 @@ userTel.addEventListener("focus", function () {
 });
 
 //обработка чекбоксов
+const templ = document.querySelector("#templ");
 let connections = document.querySelector(".form__connection");
 connections.addEventListener("click", function (e) {
     let target = e.target;

@@ -18,14 +18,14 @@
     <div class="container header__container">
       <h1 class="visually-hidden">Путешествия</h1>
 
-      <button class="header__menu-btn menu-btn menu-btn_close">
+      <button class="header__menu-btn menu-btn">
         <span class="menu-btn__elem menu-btn__elem_top"></span>
         <span class="menu-btn__elem menu-btn__elem_middle"></span>
         <span class="menu-btn__elem menu-btn__elem_bottom"></span>
       </button>
     </div>
 
-    <div class="header__menu menu menu_open">
+    <div class="header__menu menu menu_close">
       <div class="menu__wrapper">
         <form action="" class="menu__form search">
           <div class="search__field search__field_country">
@@ -34,13 +34,32 @@
               <span class="search__more"></span>
             </div>
           </div>
+
           <div class="search__field search__field_dates">
             <div class="search__field-wrap">
-              <span class="search__title">Даты</span>
+              <span class="search__title search__title_dates">Даты</span>
               <span class=" search__more search__more_date"></span>
             </div>
 
+            <div class="calendar calendar_disactive" id="calendar">
+              <div class="calendar__controls">
+                <button class="calendar__btn calendar__btn_prev" type="button">
+                  <span></span>
+                </button>
+                <span class="calendar__month"></span>
+                <button class="calendar__btn calendar__btn_next" type="button">
+                  <span></span>
+                </button>
+              </div>
+
+              <div class="calendar__container"></div>
+
+              <p class="calendar__info">
+                Выберите дату, не позднее которой<br> хотите вернуться
+              </p>
+            </div>
           </div>
+
           <div class=" search__field search__field_type">
             <div class="search__field-wrap">
               <span class="search__title search__title_type">Тип путешествия</span>
@@ -648,23 +667,6 @@
         <button class="btn popup__btn popup__btn_agree">Согласен</button>
         <button class="btn popup__btn popup__btn_disagree">Не согласен</button>
       </div>
-    </div>
-
-    <div class="calendar" id="calendar">
-      <div class="calendar__controls">
-        <button class="calendar__btn calendar__btn_prev" type="button">
-
-        </button>
-        <span class="calendar__month"></span>
-        <button class="calendar__btn calendar__btn_next" type="button">
-        </button>
-      </div>
-
-      <div class="calendar__container"></div>
-
-      <p class="calendar__info">
-        Выберите дату, не позднее которой<br> хотите вернуться
-      </p>
     </div>
   </template>
 </body>
