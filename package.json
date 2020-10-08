@@ -34,7 +34,8 @@
     "gulp-plumber": "^1.2.1",
     "gulp-remember": "^1.0.1",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-webp": "^4.0.1"
+    "gulp-webp": "^4.0.1",
+    "jquery": "^3.5.1"
   },
   "repository": {
     "type": "git",

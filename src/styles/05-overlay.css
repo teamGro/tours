@@ -18,7 +18,7 @@
 .overlay_disactive {
     width  : 0;
     height : 0;
-    z-index: 1;
+    z-index: -1;
 }
 
 .agreements__popup {
@@ -52,7 +52,7 @@
     animation-duration: .4s;
 }
 
-.popup__close {
+.popup__close-btn {
     position: absolute;
     top     : 10px;
     right   : 10px;

@@ -138,8 +138,8 @@
   }
 
   .btn {
-    border-radius: 30px;
-
+    border-radius : 30px;
+    border        : 1px solid #FFD241;
     font-size     : 12px;
     font-weight   : 500;
     line-height   : 14px;
@@ -148,7 +148,10 @@
 
     background-color: #FFD241;
     outline         : none;
+    transition      : all 1s ease;
   }
+
+
 
   @media(min-width: 768px) {
     .container {

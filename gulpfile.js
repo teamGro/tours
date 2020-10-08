@@ -43,8 +43,11 @@ gulp.task("getAllCSS", () => {
     );
 });
 
-gulp.task("clean", () => {
-    return del(["public/styles"]);
+gulp.task("clean", (done) => {
+    del(["public/styles/styles.css"]);
+    del(["public/*.html"]);
+    del(["public/scripts/script-min.js"]);
+    done();
 });
 
 gulp.task("copy", () => {

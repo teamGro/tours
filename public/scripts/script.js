@@ -1,26 +1,38 @@
-// Отрисовка фигуры в footer
-let canvasTopElem = document.querySelector('.footer__item-line_top');
-let canvasBottomElem = document.querySelector('.footer__item-line_bottom');
+//меню
+let menuBtn = document.querySelector(".menu-btn");
+let menuContainer = document.querySelector(".menu");
 
-if (canvasTopElem.getContext) {
-    let ctxTop = canvasTopElem.getContext('2d');
-    ctxTop.strokeStyle = "rgb(255, 255, 255)";
-    ctxTop.lineWidth = 5;
-    ctxTop.beginPath();
-    ctxTop.moveTo(0, 0);
-    ctxTop.lineTo(54.5, 74);
-    ctxTop.lineTo(5000, 74);
-    ctxTop.stroke();
+menuBtn.addEventListener("click", function () {
+    this.classList.toggle("menu-btn_open");
+    if (this.classList.contains("menu-btn_open")) {
+        this.classList.remove("menu-btn_close");
+    } else {
+        this.classList.add("menu-btn_close");
+    }
+    menuContainer.classList.toggle("menu_open");
+})
 
-    let ctxBottom = canvasBottomElem.getContext('2d');
-    ctxBottom.strokeStyle = "rgb(255, 255, 255)";
-    ctxBottom.lineWidth = 5;
-    ctxBottom.beginPath();
-    ctxBottom.moveTo(0, 80);
-    ctxBottom.lineTo(54.5, 3);
-    ctxBottom.lineTo(5000, 3);
-    ctxBottom.stroke();
-}
+let templ = document.querySelector("#templ");
+let countriesField = document.querySelector(".search__field_country");
+let countryTemplate = templ.content.querySelector("#countries");
+countriesField.addEventListener("click", function (e) {
+    let target = e.target;
+    console.log(target);
+    if (target.closest(".search__field-wrap")) {
+        if (this.querySelector(".menu__list") == null) {
+            let list = renderCountriesList(countries, { main: "menu__list countries menu__list_disactive", sub: "countries__places countries__places_disactive" }, { main: "countries__item", sub: "places" });
+            this.append(list);
+            this.querySelector(".search__more").classList.add("search__more_open");
+            this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+            return;
+        }
+        this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+        this.querySelector(".search__more").classList.toggle("search__more_open");
+        return;
+    }
+    target.querySelector(".countries__places").classList.toggle("countries__places_disactive");
+})
+
 
 // фильтр по странам
 let toursFilterBtns = document.querySelector(".tours__btn-wrap");
@@ -48,6 +60,16 @@ let filterSpainBtn = document.querySelector("#spain");
 filterSpainBtn.addEventListener("click", function (e) {
     filterHandler(this, e);
 });
+
+//Позиционирование кнопки для слайдера в блоке "Горячие туры"
+let heightHotContainer = document.querySelector(".offers__item");
+let btnNextSlideHot = document.querySelector(".tours__btn-arrow_hot");
+btnNextSlideHot.style.top = heightHotContainer.offsetHeight - btnNextSlideHot.offsetHeight / 2 + "px";
+
+//Позиционирование кнопки для слайдера в блоке "Популярные туры"
+let imgHeightPop = document.querySelector(".popular__img");
+let btnNextSlidePop = document.querySelector(".tours__btn-arrow_pop");
+btnNextSlidePop.style.top = imgHeightPop.offsetHeight / 2 - btnNextSlidePop.offsetHeight / 2 + "px";
 
 // валидация данных в форме
 let dataPatterns = {
@@ -122,7 +144,7 @@ agreementsSubscibe.addEventListener("click", function () {
 });
 
 let agreementsHandle = document.querySelector(".agreements__input_handle");
-let popupContainer = document.querySelector("#templ").content.querySelector(".popup");
+let popupContainer = templ.content.querySelector(".popup");
 let overlay = document.querySelector(".overlay");
 agreementsHandle.addEventListener("click", function () {
     this.classList.toggle("agreements__input_active");
@@ -152,7 +174,7 @@ agreementsHandle.addEventListener("click", function () {
             return;
         });
 
-        let closeBtn = overlay.querySelector(".popup__close");
+        let closeBtn = overlay.querySelector(".popup__close-btn");
         closeBtn.addEventListener("click", () => {
             document.body.style.overflow = "";
             this.classList.remove("agreements__input_active");
@@ -207,6 +229,29 @@ new Glide('.glide', {
     // perView: 1
 }).mount()
 
+// Отрисовка фигуры в footer
+let canvasTopElem = document.querySelector('.footer__item-line_top');
+let canvasBottomElem = document.querySelector('.footer__item-line_bottom');
+
+if (canvasTopElem.getContext) {
+    let ctxTop = canvasTopElem.getContext('2d');
+    ctxTop.strokeStyle = "rgb(255, 255, 255)";
+    ctxTop.lineWidth = 5;
+    ctxTop.beginPath();
+    ctxTop.moveTo(0, 0);
+    ctxTop.lineTo(54.5, 74);
+    ctxTop.lineTo(5000, 74);
+    ctxTop.stroke();
+
+    let ctxBottom = canvasBottomElem.getContext('2d');
+    ctxBottom.strokeStyle = "rgb(255, 255, 255)";
+    ctxBottom.lineWidth = 5;
+    ctxBottom.beginPath();
+    ctxBottom.moveTo(0, 80);
+    ctxBottom.lineTo(54.5, 3);
+    ctxBottom.lineTo(5000, 3);
+    ctxBottom.stroke();
+}
 
 // функции
 function filterHandler(elem, ev) {
@@ -259,3 +304,47 @@ function onFocusHandle(elem, clName) {
         elem.classList.remove(clName);
     }
 }
+
+// Данные
+let countries = {
+    "Южная Америка": ["Аргентина", "Бразилия", "Перу", "Уругвай", "Чили", "Эквадор"],
+    "Арктика и Антарктика": ["Арктика", "Антарктика"],
+    "Северная Америка": ["США", "Мексика", "Канада"],
+    "Африка": ["Египет", "Нигерия"],
+    "Австралия и Океания": ["Австралия", "Океания"],
+    "Европа": ["Франция", "Германия", "Италия"],
+    "Россия": ["Москва", "Санкт-Петербург"],
+    "Азия": ["Китай", "Япония"]
+}
+
+function renderCountriesList(countries, parentClNames, childClNames) {
+    let parent = document.createElement("ul");
+    parent.className = parentClNames.main;
+    let fragment = new DocumentFragment();
+    for (let key in countries) {
+        let item = document.createElement("li");
+        item.className = childClNames.main;
+        item.textContent = key;
+        let localList = document.createElement("ul");
+        let localFragment = new DocumentFragment();
+        localList.className = parentClNames.sub;
+        countries[key].forEach(elem => {
+            let localitem = document.createElement("li");
+            localitem.className = childClNames.sub;
+            localitem.textContent = elem;
+            localFragment.append(localitem);
+        })
+        localList.append(localFragment);
+        item.append(localList);
+        fragment.append(item)
+    }
+    parent.append(fragment);
+
+    return parent;
+}
+
+
+
+
+
+

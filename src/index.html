@@ -6,8 +6,9 @@
   <meta name="description" content="Горящие туры: Испания, Исландия, Италия, Турция ">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="./styles/animate.min.css">
-  <link rel="stylesheet" href="./styles/styles.min.css">
+
   <script src="./scripts/glide.min.js" defer></script>
+  <link rel="stylesheet" href="./styles/styles.min.css">
   <script src="./scripts/script.js" defer></script>
   <title>Путешествия</title>
 </head>
@@ -17,7 +18,7 @@
     <div class="container header__container">
       <h1 class="visually-hidden">Путешествия</h1>
 
-      <button class="header__menu-btn menu-btn">
+      <button class="header__menu-btn menu-btn menu-btn_close">
         <span class="menu-btn__elem menu-btn__elem_top"></span>
         <span class="menu-btn__elem menu-btn__elem_middle"></span>
         <span class="menu-btn__elem menu-btn__elem_bottom"></span>
@@ -25,8 +26,27 @@
     </div>
 
     <div class="header__menu menu menu_close">
-      <form action="" class="menu__form">
+      <form action="" class="menu__form search">
+        <div class="search__field search__field_country">
+          <div class="search__field-wrap">
+            <span class="search__title">Страны</span>
+            <span class="search__more"></span>
+          </div>
+        </div>
+        <div class="search__field search__field_dates">
+          <div class="search__field-wrap">
+            <span class="search__title">Даты</span>
+            <span class=" search__more search__more_date"></span>
+          </div>
 
+        </div>
+        <div class=" search__field search__field_type">
+          <div class="search__field-wrap">
+            <span class="search__title">Тип путешествия</span>
+            <span class="search__more"></span>
+          </div>
+        </div>
+        <button class="menu__btn search__btn" type="submit">Найти</button>
       </form>
 
       <nav class="menu__nav navigate">
@@ -47,7 +67,7 @@
       </nav>
 
       <a href="tel:88001234567" class="navigate__tel">8 (800) 123-45-67</a>
-      <button class="navigate__btn">Подберите мне тур</button>
+      <button class="menu__btn navigate__btn">Подберите мне тур</button>
     </div>
   </header>
 
@@ -341,7 +361,8 @@
           </div>
 
           <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--right tours__btn-arrow arrow" data-glide-dir=">">
+            <button class="glide__arrow glide__arrow--right tours__btn-arrow tours__btn-arrow_hot arrow"
+              data-glide-dir=">">
             </button>
           </div>
         </div>
@@ -438,7 +459,8 @@
           </div>
 
           <div class="glide__arrows" data-glide-el="controls">
-            <button class="tours__btn-arrow glide__arrow glide__arrow--right" data-glide-dir=">"></button>
+            <button class="tours__btn-arrow tours__btn-arrow_pop glide__arrow glide__arrow--right"
+              data-glide-dir=">"></button>
           </div>
         </div>
       </section>
@@ -609,7 +631,7 @@
 
   <template id="templ">
     <div class="agreements__popup popup">
-      <button class="popup__close" type="button">&#10006;</button>
+      <button class="popup__close-btn" type="button">&#10006;</button>
       <p class="popup__info">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum atque libero id ullam sit alias animi ab
         repellat veritatis, voluptates debitis nostrum recusandae aliquam quo aspernatur velit minima. Voluptatum,
@@ -620,6 +642,9 @@
         <button class="btn popup__btn popup__btn_disagree">Не согласен</button>
       </div>
     </div>
+
+    <ul class="menu__list" id="countries"></ul>
+    <ul class="menu__list" id="travelTypes"></ul>
   </template>
 </body>
 

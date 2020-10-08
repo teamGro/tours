@@ -234,7 +234,7 @@
 }
 
 .form__user-wrap:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .form__label {
@@ -398,6 +398,10 @@
 
 .form__btn {
   margin: 28px auto 39px;
+}
+
+.form__btn:hover {
+  background-color: #FFF;
 }
 
 .btn-send {
@@ -583,7 +587,6 @@
   .tours__btn-arrow {
     position: absolute;
     right   : -47px;
-    top     : 47%;
 
     width        : 17px;
     height       : 17px;
