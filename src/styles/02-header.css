@@ -91,6 +91,11 @@
     transition: all .3s linear;
 }
 
+.menu__wrapper {
+    display       : flex;
+    flex-direction: column;
+}
+
 .menu__form {
     margin-bottom: 30px;
 }
@@ -114,7 +119,6 @@
     background   : #FFFFFF;
     border-radius: 29.5px;
     margin-bottom: 14px;
-    padding      : 12px 30px;
 
     color      : #010101;
     font-weight: 300;
@@ -125,6 +129,8 @@
     width          : 100%;
     justify-content: space-between;
     align-items    : center;
+    padding        : 12px 30px;
+    cursor         : pointer;
 }
 
 .search__title {
@@ -160,6 +166,12 @@
     font-weight     : 700;
     text-transform  : uppercase;
     background-color: #FFD241;
+    transition      : all .3s linear;
+}
+
+.menu__btn:hover,
+.menu__btn:focus {
+    background-color: #FFF;
 }
 
 .menu__nav {
@@ -181,6 +193,15 @@
     color         : #141414;
 }
 
+.navigate__item {
+    transition: color .3s linear;
+}
+
+.navigate__item:hover,
+.navigate__item:focus {
+    color: #FFF;
+}
+
 .navigate__item:not(:last-child) {
     margin-bottom: 20px;
 }
@@ -194,14 +215,19 @@
     text-align    : center;
     letter-spacing: 0.1em;
     color         : #141414;
+    transition    : color .3s linear;
+}
+
+.navigate__tel:hover,
+.navigate__tel:focus {
+    color: #FFF;
 }
 
 .menu__list {
-    overflow     : hidden;
     width        : 100%;
     max-height   : 540px;
-    margin-top   : 25px;
-    padding      : 5px;
+    margin-top   : 20px;
+    padding      : 0px 30px;
     overflow-y   : auto;
     border-radius: 29.5px;
 
@@ -219,11 +245,16 @@
     max-height: 0;
     margin    : 0;
     padding   : 0;
+    opacity   : 0;
     transition: all .3s linear;
 }
 
 .menu__item:not(:last-child) {
     margin-bottom: 10px;
+}
+
+.menu__item {
+    cursor: pointer;
 }
 
 .countries__places {
@@ -237,13 +268,15 @@
     line-height: 20px;
     font-weight: 500;
     transition : all .3s linear;
+    text-align : left;
 }
 
 .places {
-    padding: 5px 14px;
+    padding: 5px 0 5px 14px;
 }
 
-.places:hover {
+.places:hover,
+.trip__item:hover {
     outline      : none;
     cursor       : pointer;
     background   : rgba(196, 196, 196, 0.3);
@@ -258,6 +291,107 @@
     transition: all .3s linear;
 }
 
+.places_all {
+    padding       : 5px 0 5px 14px;
+    text-transform: uppercase;
+    color         : #FFD241;
+}
+
+.places_all:hover {
+    outline      : none;
+    cursor       : pointer;
+    background   : rgba(196, 196, 196, 0.3);
+    border-radius: 15px;
+}
+
+.calendar {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    padding        : 20px;
+    width          : 100%;
+
+    font-size  : 12px;
+    line-height: 35px;
+
+    color: #000000;
+}
+
+.calendar_disactive {
+    overflow  : hidden;
+    max-height: 0;
+    margin    : 0;
+    padding   : 0;
+    opacity   : 0;
+    transition: all .3s linear;
+}
+
+.calendar__controls {
+    width          : 100%;
+    display        : flex;
+    justify-content: space-between;
+}
+
+.calendar__btn {
+    display      : block;
+    width        : 4px;
+    height       : 4px;
+    border-left  : 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.calendar__btn_prev {
+    transform: rotate(45deg);
+}
+
+.calendar__btn_next {
+    transform: rotate(-135deg);
+}
+
+.calendar__btn::focus,
+.calendar__btn::hover {
+    outline: none;
+}
+
+.calendar__month {
+    font-size  : 14px;
+    line-height: 17px;
+    font-weight: 700;
+}
+
+.calendar__info {
+    font-size  : 12px;
+    line-height: 14px;
+    text-align : center;
+}
+
+.calendar__container {
+    width : 100%;
+    margin: 20px auto;
+}
+
+.calendar__table {
+    width     : 100%;
+    text-align: center;
+}
+
+.calendar__table td {
+    cursor: pointer;
+}
+
+.trips {
+    padding-bottom: 10px;
+}
+
+.trips.menu__list_disactive {
+    padding-bottom: 0;
+}
+
+.trip__item {
+    padding-left: 15px;
+}
+
 
 @media(min-width: 1024px) {
     .header__container {
@@ -267,9 +401,11 @@
     }
 
     .menu_open {
-        position: absolute;
-        right   : 0;
-        width   : 50%;
+        position       : absolute;
+        right          : 0;
+        width          : 50%;
+        min-height     : calc(100vh - 70px);
+        justify-content: space-between;
 
         background-color: #FFD241;
     }
@@ -277,6 +413,10 @@
     .menu_close {
         position: absolute;
         right   : 0;
+    }
+
+    .search__btn {
+        display: none;
     }
 }
 

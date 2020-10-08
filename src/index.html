@@ -25,49 +25,56 @@
       </button>
     </div>
 
-    <div class="header__menu menu menu_close">
-      <form action="" class="menu__form search">
-        <div class="search__field search__field_country">
-          <div class="search__field-wrap">
-            <span class="search__title">Страны</span>
-            <span class="search__more"></span>
+    <div class="header__menu menu menu_open">
+      <div class="menu__wrapper">
+        <form action="" class="menu__form search">
+          <div class="search__field search__field_country">
+            <div class="search__field-wrap">
+              <span class="search__title search__title_country">Страны</span>
+              <span class="search__more"></span>
+            </div>
           </div>
-        </div>
-        <div class="search__field search__field_dates">
-          <div class="search__field-wrap">
-            <span class="search__title">Даты</span>
-            <span class=" search__more search__more_date"></span>
+          <div class="search__field search__field_dates">
+            <div class="search__field-wrap">
+              <span class="search__title">Даты</span>
+              <span class=" search__more search__more_date"></span>
+            </div>
+
           </div>
-
-        </div>
-        <div class=" search__field search__field_type">
-          <div class="search__field-wrap">
-            <span class="search__title">Тип путешествия</span>
-            <span class="search__more"></span>
+          <div class=" search__field search__field_type">
+            <div class="search__field-wrap">
+              <span class="search__title search__title_type">Тип путешествия</span>
+              <span class="search__more"></span>
+            </div>
           </div>
-        </div>
-        <button class="menu__btn search__btn" type="submit">Найти</button>
-      </form>
+          <button class="menu__btn search__btn" type="submit">Найти</button>
+        </form>
 
-      <nav class="menu__nav navigate">
-        <ul class="navigate__list">
-          <li class="navigate__item">
-            <a href="#">Путешествия</a>
-          </li>
-          <li class="navigate__item">
-            <a href="#">О нас</a>
-          </li>
-          <li class="navigate__item">
-            <a href="#">Отзывы</a>
-          </li>
-          <li class="navigate__item">
-            <a href="#">Блог</a>
-          </li>
-        </ul>
-      </nav>
+        <nav class="menu__nav navigate">
+          <ul class="navigate__list">
+            <li class="navigate__item">
+              <a href="#">Путешествия</a>
+            </li>
+            <li class="navigate__item">
+              <a href="#">О нас</a>
+            </li>
+            <li class="navigate__item">
+              <a href="#">Отзывы</a>
+            </li>
+            <li class="navigate__item">
+              <a href="#">Блог</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
-      <a href="tel:88001234567" class="navigate__tel">8 (800) 123-45-67</a>
-      <button class="menu__btn navigate__btn">Подберите мне тур</button>
+      <div class="menu__wrapper">
+        <a href="tel:88001234567" class="navigate__tel">8 (800) 123-45-67</a>
+        <button class="menu__btn navigate__btn">Подберите мне тур</button>
+      </div>
+
+
+
     </div>
   </header>
 
@@ -643,8 +650,22 @@
       </div>
     </div>
 
-    <ul class="menu__list" id="countries"></ul>
-    <ul class="menu__list" id="travelTypes"></ul>
+    <div class="calendar" id="calendar">
+      <div class="calendar__controls">
+        <button class="calendar__btn calendar__btn_prev" type="button">
+
+        </button>
+        <span class="calendar__month"></span>
+        <button class="calendar__btn calendar__btn_next" type="button">
+        </button>
+      </div>
+
+      <div class="calendar__container"></div>
+
+      <p class="calendar__info">
+        Выберите дату, не позднее которой<br> хотите вернуться
+      </p>
+    </div>
   </template>
 </body>
 

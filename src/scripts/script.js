@@ -1,6 +1,6 @@
 //меню
-let menuBtn = document.querySelector(".menu-btn");
-let menuContainer = document.querySelector(".menu");
+const menuBtn = document.querySelector(".menu-btn");
+const menuContainer = document.querySelector(".menu");
 
 menuBtn.addEventListener("click", function () {
     this.classList.toggle("menu-btn_open");
@@ -12,15 +12,14 @@ menuBtn.addEventListener("click", function () {
     menuContainer.classList.toggle("menu_open");
 })
 
-let templ = document.querySelector("#templ");
-let countriesField = document.querySelector(".search__field_country");
-let countryTemplate = templ.content.querySelector("#countries");
+// обработчик для стран
+const countriesField = document.querySelector(".search__field_country");
+let countriesFieldName = document.querySelector(".search__title_country");
 countriesField.addEventListener("click", function (e) {
     let target = e.target;
-    console.log(target);
     if (target.closest(".search__field-wrap")) {
         if (this.querySelector(".menu__list") == null) {
-            let list = renderCountriesList(countries, { main: "menu__list countries menu__list_disactive", sub: "countries__places countries__places_disactive" }, { main: "countries__item", sub: "places" });
+            let list = renderCountriesList(countries, { main: "menu__list countries menu__list_disactive", sub: "countries__places countries__places_disactive" }, { main: "menu__item", sub: "places", allTours: "places_all" });
             this.append(list);
             this.querySelector(".search__more").classList.add("search__more_open");
             this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
@@ -30,7 +29,104 @@ countriesField.addEventListener("click", function (e) {
         this.querySelector(".search__more").classList.toggle("search__more_open");
         return;
     }
+    if (target.closest(".places")) {
+        countriesFieldName.textContent = target.textContent;
+        this.querySelector(".countries__places").classList.toggle("countries__places_disactive");
+        this.querySelector(".search__more").classList.toggle("search__more_open");
+        this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+    }
     target.querySelector(".countries__places").classList.toggle("countries__places_disactive");
+})
+
+//Обработчик для календаря
+months = {
+    0: "Январь",
+    1: "Февраль",
+    2: "Март",
+    3: "Апрель",
+    4: "Май",
+    5: "Июнь",
+    6: "Июль",
+    7: "Август",
+    8: "Сентябрь",
+    9: "Октябрь",
+    10: "Ноябрь",
+    11: "Декабрь",
+}
+const templ = document.querySelector("#templ");
+const dateField = document.querySelector(".search__field_dates");
+let dateTempl = templ.content.querySelector("#calendar");
+dateField.addEventListener("click", function (e) {
+    let target = e.target;
+    console.log(target);
+
+    let date, month, year, monthYearField;
+    let calendarContainer;
+
+    if (target.closest(".search__field-wrap") && target.tagName != "BUTTON") {
+        if (this.querySelector(".calendar") == null) {
+            date = new Date();
+            month = date.getMonth();
+            year = date.getFullYear();
+            monthYearField = dateTempl.querySelector(".calendar__month");
+            monthYearField.textContent = `${months[month]} ${year}`;
+
+            calendarContainer = dateTempl.querySelector(".calendar__container");
+            console.log(calendarContainer);
+            createCalendar(calendarContainer, year, month);
+            this.append(dateTempl);
+            this.querySelector(".search__more").classList.add("search__more_open");
+
+            return;
+        }
+        this.querySelector(".calendar").classList.toggle("calendar_disactive");
+        this.querySelector(".search__more").classList.toggle("search__more_open");
+        return;
+    }
+
+    let btnNextMonth = this.querySelector(".calendar__btn_next");
+    btnNextMonth.addEventListener("click", () => {
+        let date = new Date();
+        let month = date.getMonth();
+        month += 1;
+        let year = date.getFullYear();
+        let monthYearField = dateTempl.querySelector(".calendar__month");
+        monthYearField.textContent = `${months[month]} ${year}`;
+
+        let calendarContainer = dateField.querySelector(".calendar__container");
+        let calendarTable = dateField.querySelector(".calendar__table");
+        calendarTable.remove();
+
+        createCalendar(calendarContainer, year, month);
+
+        //calendarContainer.append(newMonth);
+    })
+})
+
+// Обработчик для типа путешествия
+
+const tripField = document.querySelector(".search__field_type");
+let tripFieldName = document.querySelector(".search__title_type");
+tripField.addEventListener("click", function (e) {
+    let target = e.target;
+    console.log(target);
+    if (target.closest(".search__field-wrap")) {
+        if (this.querySelector(".menu__list") == null) {
+            let list = renderTripTypes(tripTypes, "menu__list trips", "menu__item trip__item");
+            this.append(list);
+            this.querySelector(".search__more").classList.add("search__more_open");
+            return;
+        }
+        this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+        this.querySelector(".search__more").classList.toggle("search__more_open");
+        return;
+    }
+
+    if (target.closest(".trip__item")) {
+        this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+        this.querySelector(".search__more").classList.toggle("search__more_open");
+        tripFieldName.textContent = target.textContent;
+    }
 })
 
 
@@ -305,16 +401,16 @@ function onFocusHandle(elem, clName) {
     }
 }
 
-// Данные
+// Данные и функции для меню
 let countries = {
-    "Южная Америка": ["Аргентина", "Бразилия", "Перу", "Уругвай", "Чили", "Эквадор"],
-    "Арктика и Антарктика": ["Арктика", "Антарктика"],
-    "Северная Америка": ["США", "Мексика", "Канада"],
-    "Африка": ["Египет", "Нигерия"],
-    "Австралия и Океания": ["Австралия", "Океания"],
-    "Европа": ["Франция", "Германия", "Италия"],
-    "Россия": ["Москва", "Санкт-Петербург"],
-    "Азия": ["Китай", "Япония"]
+    "Южная Америка": [{ name: "Аргентина", link: "#" }, { name: "Бразилия", link: "#" }, { name: "Перу", link: "#" }, { name: "Уругвай", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Арктика и Антарктика": [{ name: "Арктика", link: "#" }, { name: "Антарктика", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Северная Америка": [{ name: "США", link: "#" }, { name: "Мексика", link: "#" }, { name: "Канада", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Африка": [{ name: "Египет", link: "#" }, { name: "Нигерия", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Австралия и Океания": [{ name: "Австралия", link: "#" }, { name: "Океания", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Европа": [{ name: "Франция", link: "#" }, { name: "Германия", link: "#" }, { name: "Италия", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Россия": [{ name: "Москва", link: "#" }, { name: "Санкт-Петербург", link: "#" }, { name: "все туры на континенте", link: "#" }],
+    "Азия": [{ name: "Китай", link: "#" }, { name: "Япония", link: "#" }, { name: "все туры на континенте", link: "#" }]
 }
 
 function renderCountriesList(countries, parentClNames, childClNames) {
@@ -328,10 +424,17 @@ function renderCountriesList(countries, parentClNames, childClNames) {
         let localList = document.createElement("ul");
         let localFragment = new DocumentFragment();
         localList.className = parentClNames.sub;
-        countries[key].forEach(elem => {
+        countries[key].forEach((elem, i) => {
             let localitem = document.createElement("li");
-            localitem.className = childClNames.sub;
-            localitem.textContent = elem;
+            let link = document.createElement("a");
+            link.textContent = elem.name;
+            link.href = elem.link
+            if (i == countries[key].length - 1) {
+                localitem.className = childClNames.allTours;
+            } else {
+                localitem.className = childClNames.sub;
+            }
+            localitem.append(link);
             localFragment.append(localitem);
         })
         localList.append(localFragment);
@@ -342,6 +445,80 @@ function renderCountriesList(countries, parentClNames, childClNames) {
 
     return parent;
 }
+
+function getNextMonth(func, dateField) {
+    let date = new Date();
+    let month = date.getMonth();
+    month += 1;
+    let year = date.getFullYear();
+    let monthYearField = dateField.querySelector(".calendar__month");
+    monthYearField.textContent = `${months[month]} ${year}`;
+
+    let calendarContainer = dateField.querySelector(".calendar__container");
+    let calendarTable = dateField.querySelector(".calendar__table");
+    calendarTable.remove();
+
+    func(calendarContainer, year, month);
+}
+
+function createCalendar(elem, year, month) {
+
+    let d = new Date(year, month);
+
+    let table = '<table class="calendar__table"><tr><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th></tr><tr>';
+
+    for (let i = 0; i < getDay(d); i++) {
+        table += '<td></td>';
+    }
+
+    while (d.getMonth() == month) {
+        table += `<td>${d.getDate()}</td>`;
+
+        if (getDay(d) % 7 == 6) {
+            table += '</tr><tr>';
+        }
+
+        d.setDate(d.getDate() + 1);
+    }
+
+    if (getDay(d) != 0) {
+        for (let i = getDay(d); i < 7; i++) {
+            table += '<td></td>';
+        }
+    }
+
+    table += '</tr></table>';
+
+    elem.innerHTML = table;
+}
+
+function getDay(date) {
+    let day = date.getDay();
+    if (day == 0) day = 7;
+    return day - 1;
+}
+
+let tripTypes = ["Активный", "Майские", "На авто", "На корабле", "Новый год", "Поход", "Серфинг", "Эксклюзив", "Экскурсионный", "Экспедиция"];
+function renderTripTypes(arr, parentClName, clName) {
+    let parent = document.createElement("ul");
+    parent.className = parentClName;
+    let fragment = new DocumentFragment();
+    arr.forEach((elem) => {
+        let item = document.createElement("li");
+        let text = document.createElement("span");
+        text.textContent = elem;
+        item.className = clName;
+        item.append(text);
+        fragment.append(item);
+    });
+
+    parent.append(fragment);
+
+    return parent;
+}
+
+
+
 
 
 
