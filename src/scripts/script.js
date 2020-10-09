@@ -244,10 +244,13 @@ const btnNextSlideHot = document.querySelector(".tours__btn-arrow_hot");
 //Позиционирование кнопки для слайдера в блоке "Популярные туры"
 const imgHeightPop = document.querySelector(".popular__img");
 const btnNextSlidePop = document.querySelector(".tours__btn-arrow_pop");
-window.addEventListener("DOMContentLoaded", () => {
-  btnNextSlideHot.style.top = heightHotContainer.offsetHeight - btnNextSlideHot.offsetHeight / 2 + "px";
-  btnNextSlidePop.style.top = imgHeightPop.offsetHeight / 2 - btnNextSlidePop.offsetHeight / 2 + "px";
 
+window.addEventListener("DOMContentLoaded", () => {
+  let heightHot = heightHotContainer.offsetHeight || 380
+  btnNextSlideHot.style.top = heightHot - btnNextSlideHot.offsetHeight / 2 + "px";
+
+  let heightPop = imgHeightPop.offsetHeight / 2 || 120
+  btnNextSlidePop.style.top = heightPop - btnNextSlidePop.offsetHeight / 2 + "px";
 })
 
 // валидация данных в форме
