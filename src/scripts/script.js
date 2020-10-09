@@ -240,12 +240,15 @@ downloadToursBtn.addEventListener("click", function () {
 //Позиционирование кнопки для слайдера в блоке "Горячие туры"
 const heightHotContainer = document.querySelector(".offers__item");
 const btnNextSlideHot = document.querySelector(".tours__btn-arrow_hot");
-btnNextSlideHot.style.top = heightHotContainer.offsetHeight - btnNextSlideHot.offsetHeight / 2 + "px";
 
 //Позиционирование кнопки для слайдера в блоке "Популярные туры"
 const imgHeightPop = document.querySelector(".popular__img");
 const btnNextSlidePop = document.querySelector(".tours__btn-arrow_pop");
-btnNextSlidePop.style.top = imgHeightPop.offsetHeight / 2 - btnNextSlidePop.offsetHeight / 2 + "px";
+window.addEventListener("DOMContentLoaded", () => {
+  btnNextSlideHot.style.top = heightHotContainer.offsetHeight - btnNextSlideHot.offsetHeight / 2 + "px";
+  btnNextSlidePop.style.top = imgHeightPop.offsetHeight / 2 - btnNextSlidePop.offsetHeight / 2 + "px";
+
+})
 
 // валидация данных в форме
 let dataPatterns = {
