@@ -397,6 +397,11 @@
     text-align: center;
 }
 
+.calendar__table td:hover {
+    background-color: #FFD241;
+    border-radius   : 50%;
+}
+
 .trips {
     padding-bottom: 10px;
 }
