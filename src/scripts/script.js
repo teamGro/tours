@@ -192,7 +192,6 @@ tripField.addEventListener("click", function (e) {
   }
 })
 
-
 // фильтр по странам
 const toursFilterBtns = document.querySelector(".tours__btn-wrap");
 const tours = document.querySelector(".offers");
@@ -219,6 +218,24 @@ const filterSpainBtn = document.querySelector("#spain");
 filterSpainBtn.addEventListener("click", function (e) {
   filterHandler(this, e);
 });
+
+//Загрузка изображений для мобильной версии
+const downloadToursBtn = document.querySelector(".tours__download");
+downloadToursBtn.addEventListener("click", function () {
+  let allHiddenTours = document.getElementsByClassName("offers__item_mobile");
+  allHiddenTours = Array.from(allHiddenTours);
+
+  const quantityDowloadTours = 2;
+
+  for (let i = 0; i <= quantityDowloadTours; i++) {
+    if (!allHiddenTours[i]) {
+      this.setAttribute("disabled", "disabled");
+      break;
+    }
+    allHiddenTours[i].classList.remove("offers__item_mobile");
+    allHiddenTours[i].classList.add("offers__item_mobile-visible");
+  }
+})
 
 //Позиционирование кнопки для слайдера в блоке "Горячие туры"
 const heightHotContainer = document.querySelector(".offers__item");
