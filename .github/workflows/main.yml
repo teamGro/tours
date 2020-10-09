@@ -13,6 +13,6 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
         with:
           heroku_api_key: 7d17f24e-83c5-44f5-9a0f-fa8009dcb0af
-          heroku_app_name: "tours-project" #Must be unique in Heroku
+          heroku_app_name: "tours-int" #Must be unique in Heroku
           heroku_email: "vas.liwanov@yandex.ru"
           buildpack: "https://github.com/teamGro/tours.git"
