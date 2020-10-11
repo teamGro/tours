@@ -25,11 +25,6 @@ countriesField.addEventListener("click", function (e) {
     if (this.querySelector(".menu__list") == null) {
       let list = renderCountriesList(countries, { main: "menu__list countries menu__list_disactive", sub: "countries__places countries__places_disactive" }, { main: "menu__item", sub: "places", allTours: "places_all" });
       this.append(list);
-
-      this.querySelector(".search__more").classList.add("search__more_open");
-      this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
-
-      return;
     }
 
     this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
@@ -40,11 +35,10 @@ countriesField.addEventListener("click", function (e) {
 
   if (target.closest(".places")) {
     countriesFieldName.textContent = target.textContent;
-    this.querySelector(".countries__places").classList.toggle("countries__places_disactive");
-    this.querySelector(".search__more").classList.toggle("search__more_open");
     this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
   }
 
+  this.querySelector(".search__more").classList.toggle("search__more_open");
   target.querySelector(".countries__places").classList.toggle("countries__places_disactive");
 });
 
@@ -63,6 +57,7 @@ let months = {
   10: "Ноябрь",
   11: "Декабрь",
 }
+
 const dateField = document.querySelector(".search__field_dates");
 let date = new Date();
 
