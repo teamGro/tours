@@ -238,7 +238,6 @@
 
   background-color: #FFFFFF;
   transition      : all .3s linear;
-
 }
 
 .menu__list_disactive {
@@ -333,7 +332,6 @@
   display        : flex;
   justify-content: space-between;
   align-items    : center;
-
 }
 
 .calendar__btn {
@@ -370,6 +368,11 @@
 
 .calendar__set-day {
   background-color: #FFD241;
+  border-radius   : 50%;
+}
+
+.calendar__days {
+  background-color: #c4c4c4;
   border-radius   : 50%;
 }
 

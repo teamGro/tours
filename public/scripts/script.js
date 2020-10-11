@@ -70,7 +70,6 @@ let currentYear = year;
 let monthYearField = dateField.querySelector(".calendar__month");
 monthYearField.textContent = `${months[currentMonth]} ${currentYear}`;
 
-let userDates = [];
 
 const btnNextMonth = dateField.querySelector(".calendar__btn_next");
 btnNextMonth.addEventListener("click", function () {
@@ -88,6 +87,7 @@ btnNextMonth.addEventListener("click", function () {
   monthYearField.textContent = `${months[currentMonth]} ${currentYear}`;
 })
 
+let userDates = [];
 const btnPrevMonth = dateField.querySelector(".calendar__btn_prev");
 btnPrevMonth.addEventListener("click", function () {
   let calendarTable = dateField.querySelector(".calendar__table");
@@ -129,33 +129,45 @@ let calendarContainer = dateField.querySelector(".calendar__container");
 calendarContainer.addEventListener("click", (e) => {
 
   let target = e.target;
-  if (target.tagName == 'TH') return;
+  if (!target.hasChildNodes() || target.tagName != "TD") return;
 
-  target.className = "calendar__set-day";
-  let userDay = target.textContent
-
+  let userDay = target.textContent;
   if (+userDay < 10) userDay = `0${userDay}`;
 
   let localCurrentMoth = currentMonth + 1;
   if (localCurrentMoth < 10) localCurrentMoth = `0${localCurrentMoth}`;
 
+  let setDays = dateField.querySelectorAll(".calendar__set-day");
+  let allDays = dateField.querySelectorAll("td");
+  if (setDays.length >= 2) {
+    Array.from(allDays).forEach(elem => {
+      elem.classList.remove("calendar__set-day");
+      elem.classList.remove("calendar__days");
+    })
+  }
+
+  target.className = "calendar__set-day";
+
   userDates.push(`${userDay}.${localCurrentMoth}.${currentYear}`);
 
   if (userDates.length == 2) {
-    dateField.querySelector(".calendar").classList.toggle("calendar_disactive");
-    dateField.querySelector(".search__more").classList.toggle("search__more_open");
-
     if (userDates[1] > userDates[0]) {
       dateField.querySelector(".search__title_dates").textContent = `${userDates[0]} - ${userDates[1]}`;
     } else {
       dateField.querySelector(".search__title_dates").textContent = `${userDates[1]} - ${userDates[0]}`;
     }
 
-    Array.from(dateField.querySelectorAll(".calendar__set-day")).forEach(elem => {
-      elem.classList.remove("calendar__set-day");
-    });
+    outerloop:
+    for (let i = 0; i < allDays.length; i++) {
+      if (allDays[i].matches("td.calendar__set-day")) {
+        for (let j = i + 1; ; j++) {
+          if (allDays[j].matches("td.calendar__set-day")) break outerloop;
+          allDays[j].classList.add("calendar__days");
+        }
+      }
+    }
 
-    userDates = [];
+    userDates.splice(0, 2);
   }
 })
 
@@ -174,17 +186,14 @@ tripField.addEventListener("click", function (e) {
 
       return;
     }
-
-    this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
-    this.querySelector(".search__more").classList.toggle("search__more_open");
-    return;
   }
 
   if (target.closest(".trip__item")) {
-    this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
-    this.querySelector(".search__more").classList.toggle("search__more_open");
     tripFieldName.textContent = target.textContent;
   }
+
+  this.querySelector(".menu__list").classList.toggle("menu__list_disactive");
+  this.querySelector(".search__more").classList.toggle("search__more_open");
 })
 
 // фильтр по странам
@@ -227,10 +236,11 @@ downloadToursBtn.addEventListener("click", function () {
       this.setAttribute("disabled", "disabled");
       break;
     }
+
     allHiddenTours[i].classList.remove("offers__item_mobile");
     allHiddenTours[i].classList.add("offers__item_mobile-visible");
   }
-})
+});
 
 //Позиционирование кнопки для слайдера в блоке "Горячие туры"
 const heightHotContainer = document.querySelector(".offers__item");
@@ -295,7 +305,7 @@ userTel.addEventListener("focus", function () {
 
 //обработка чекбоксов
 const templ = document.querySelector("#templ");
-let connections = document.querySelector(".form__connection");
+const connections = document.querySelector(".form__connection");
 connections.addEventListener("click", function (e) {
   let target = e.target;
   if (target.tagName == "SPAN" && target.classList.contains("chk__input")) {
@@ -366,7 +376,6 @@ agreementsHandle.addEventListener("click", function () {
       return;
     });
   }
-
 });
 
 //отправка формы
